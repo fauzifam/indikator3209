@@ -36,14 +36,13 @@ $assetDir = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/admi
     <?php $this->head() ?>
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini sidebar-collapse">
     <?php $this->beginBody() ?>
 
     <div class="wrapper">
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__wobble" src="<?=$assetDir?>/img/AdminLTELogo.png" alt="AdminLTELogo" height="60"
-                width="60">
+            <?= Html::img('@web/images/bps.png', ['style' => 'width:70; height:70;', 'class'=>'animation__wobble', 'alt'=>'logo BPS']) ?>
         </div>
 
         <!-- Navbar -->
@@ -58,7 +57,7 @@ $assetDir = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/admi
         <!-- /.content-wrapper -->
 
         <!-- Control Sidebar -->
-        <?= $this->render('control-sidebar') ?>
+        <!-- < ?= $this->render('control-sidebar') ?> -->
         <!-- /.control-sidebar -->
 
         <!-- Main Footer -->
