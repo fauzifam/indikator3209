@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Metadata;
+use Codeception\Step\Meta;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -35,9 +36,7 @@ class MetadataController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Metadata::find(),
-        ]);
+        $dataProvider = Metadata::find()->all();
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
@@ -52,8 +51,9 @@ class MetadataController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
+        $model = Metadata::findOne($id);
+        return $this->renderAjax('view', [
+            'model' => $model,
         ]);
     }
 
@@ -66,11 +66,16 @@ class MetadataController extends Controller
     {
         $model = new Metadata();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'metadata_id' => $model->metadata_id]);
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'Berhasil Disimpan');
+            } else {
+                Yii::$app->session->setFlash('danger', 'Gagal Disimpan');
+            }
+            return $this->redirect(['index']);
         }
 
-        return $this->render('create', [
+        return $this->renderAjax('create', [
             'model' => $model,
         ]);
     }
@@ -84,13 +89,18 @@ class MetadataController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        $model = Metadata::findOne($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'metadata_id' => $model->metadata_id]);
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'Berhasil Diubah');
+            } else {
+                Yii::$app->session->setFlash('danger', 'Gagal Diubah');
+            }
+            return $this->redirect(['index']);
         }
 
-        return $this->render('update', [
+        return $this->renderAjax('update', [
             'model' => $model,
         ]);
     }
@@ -104,24 +114,13 @@ class MetadataController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
-
-    /**
-     * Finds the Metadata model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $id Metadata ID
-     * @return Metadata the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = Metadata::findOne($id)) !== null) {
-            return $model;
+        $model = Metadata::findOne($id);
+        if ($model->delete()) {
+            Yii::$app->session->setFlash('info', 'Berhasil Dihapus');
+        } else {
+            Yii::$app->session->setFlash('danger', 'Gagal Dihapus');
         }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+        return $this->redirect(['index']);
     }
 }

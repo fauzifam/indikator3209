@@ -43,11 +43,11 @@ class Metadata extends \yii\db\ActiveRecord
     {
         return [
             'metadata_id' => 'Metadata ID',
-            'metadata_text' => 'Metadata Text',
-            'metadata_kondef' => 'Metadata Kondef',
-            'metadata_kegunaan' => 'Metadata Kegunaan',
-            'metadata_interpretasi' => 'Metadata Interpretasi',
-            'metadata_sumber' => 'Metadata Sumber',
+            'metadata_text' => 'Judul',
+            'metadata_kondef' => 'Konsep Definisi',
+            'metadata_kegunaan' => 'Kegunaan',
+            'metadata_interpretasi' => 'Interpretasi',
+            'metadata_sumber' => 'Sumber',
         ];
     }
 

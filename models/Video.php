@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int $video_id
  * @property string $video_kategori
+ * @property string $video_text
  * @property string $video_link
  */
 class Video extends \yii\db\ActiveRecord
@@ -27,8 +28,8 @@ class Video extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['video_kategori', 'video_link'], 'required'],
-            [['video_kategori', 'video_link'], 'string'],
+            [['video_kategori', 'video_text', 'video_link'], 'required'],
+            [['video_kategori', 'video_text', 'video_link'], 'string'],
         ];
     }
 
@@ -39,8 +40,9 @@ class Video extends \yii\db\ActiveRecord
     {
         return [
             'video_id' => 'Video ID',
-            'video_kategori' => 'Video Kategori',
-            'video_link' => 'Video Link',
+            'video_text' => 'Judul',
+            'video_kategori' => 'Kategori',
+            'video_link' => 'Link Video',
         ];
     }
 }

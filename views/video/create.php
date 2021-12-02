@@ -5,9 +5,6 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Video */
 
-$this->title = 'Create Video';
-$this->params['breadcrumbs'][] = ['label' => 'Videos', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="container-fluid">

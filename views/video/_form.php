@@ -14,7 +14,9 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'video_kategori')->dropDownList([ 'MATERI STATISTIK' => 'MATERI STATISTIK', 'RILIS INDIKATOR' => 'RILIS INDIKATOR', ], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'video_link')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'video_text')->textarea(['rows' => 3]) ?>
+    
+    <?= $form->field($model, 'video_link')->textarea(['rows' => 3]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

@@ -3,10 +3,6 @@
 /* @var $this yii\web\View */
 /* @var $model app\models\Video */
 
-$this->title = 'Update Video: ' . $model->video_id;
-$this->params['breadcrumbs'][] = ['label' => 'Videos', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->video_id, 'url' => ['view', 'video_id' => $model->video_id]];
-$this->params['breadcrumbs'][] = 'Update';
 ?>
 
 <div class="container-fluid">

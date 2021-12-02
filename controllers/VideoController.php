@@ -35,9 +35,7 @@ class VideoController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Video::find(),
-        ]);
+        $dataProvider = Video::find()->all();
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
@@ -52,8 +50,9 @@ class VideoController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
+        $model = Video::findOne($id);
+        return $this->renderAjax('view', [
+            'model' => $model,
         ]);
     }
 
@@ -66,11 +65,16 @@ class VideoController extends Controller
     {
         $model = new Video();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'video_id' => $model->video_id]);
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'Berhasil Disimpan');
+            } else {
+                Yii::$app->session->setFlash('danger', 'Gagal Disimpan');
+            }
+            return $this->redirect(['index']);
         }
 
-        return $this->render('create', [
+        return $this->renderAjax('create', [
             'model' => $model,
         ]);
     }
@@ -84,13 +88,18 @@ class VideoController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        $model = Video::findOne($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'video_id' => $model->video_id]);
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'Berhasil Diubah');
+            } else {
+                Yii::$app->session->setFlash('danger', 'Gagal Diubah');
+            }
+            return $this->redirect(['index']);
         }
 
-        return $this->render('update', [
+        return $this->renderAjax('update', [
             'model' => $model,
         ]);
     }
@@ -104,24 +113,13 @@ class VideoController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
-
-    /**
-     * Finds the Video model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $id Video ID
-     * @return Video the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = Video::findOne($id)) !== null) {
-            return $model;
+        $model = Video::findOne($id);
+        if ($model->delete()) {
+            Yii::$app->session->setFlash('info', 'Berhasil Dihapus');
+        } else {
+            Yii::$app->session->setFlash('danger', 'Gagal Dihapus');
         }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+        return $this->redirect(['index']);
     }
 }

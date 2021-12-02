@@ -17,7 +17,43 @@ class PluginAsset extends AssetBundle
         ],
         'icheck-bootstrap' => [
             'css' => ['icheck-bootstrap/icheck-bootstrap.css']
-        ]
+        ],
+        'dataTable' => [
+            'css' => [
+                'datatables-bs4/css/dataTables.bootstrap4.min.css',
+                'datatables-responsive/css/responsive.bootstrap4.min.css',
+            ],
+            'js' => [
+                'datatables/jquery.dataTables.min.js',
+                'datatables-bs4/js/dataTables.bootstrap4.min.js',
+                'datatables-responsive/js/dataTables.responsive.min.js',
+                'datatables-responsive/js/responsive.bootstrap4.min.js',
+            ]
+        ],
+        'chartJs' => [
+            'css' => ['chart.js/Chart.min.css'],
+            'js' => ['chart.js/Chart.min.js']
+        ],
+        'sweetAlert' => [
+            'css' => ['sweetalert2-theme-bootstrap-4/bootstrap-4.min.css'],
+            'js' => ['sweetalert2/sweetalert2.min.js']
+        ],
+        'select2' => [
+            'css' => ['select2/css/select2.min.css', 'select2-bootstrap4-theme/select2-bootstrap4.min.css'],
+            'js' => ['select2/js/select2.full.min.js'],
+        ],
+        'bs-stepper' => [
+            'css' => ['bs-stepper/css/bs-stepper.min.css'],
+            'js' => ['bs-stepper/js/bs-stepper.min.js']
+        ],
+        'toastr' => [
+            'css' => ['toastr/toastr.min.css'],
+            'js' => ['toastr/toastr.min.js'],
+        ],
+        'dataTable-select' => [
+            'css' => ['datatables-select/css/select.bootstrap4.min.css'],
+            'js' => ['datatables-select/js/select.bootstrap4/min.js', 'dataTables.select.min.js'],
+        ],
     ];
 
     /**

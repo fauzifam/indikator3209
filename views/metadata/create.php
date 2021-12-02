@@ -5,9 +5,6 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Metadata */
 
-$this->title = 'Create Metadata';
-$this->params['breadcrumbs'][] = ['label' => 'Metadatas', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="container-fluid">

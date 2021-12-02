@@ -6,9 +6,6 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Video */
 
-$this->title = $model->video_id;
-$this->params['breadcrumbs'][] = ['label' => 'Videos', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 
@@ -17,22 +14,21 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
-                    <p>
-                        <?= Html::a('Update', ['update', 'video_id' => $model->video_id], ['class' => 'btn btn-primary']) ?>
-                        <?= Html::a('Delete', ['delete', 'video_id' => $model->video_id], [
-                            'class' => 'btn btn-danger',
-                            'data' => [
-                                'confirm' => 'Are you sure you want to delete this item?',
-                                'method' => 'post',
-                            ],
-                        ]) ?>
-                    </p>
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
                             'video_id',
                             'video_kategori',
+                            'video_text',
                             'video_link:ntext',
+                            [
+                                // 'format' => 'raw',
+                                'attribute' => 'Preview',
+                                'value' => !empty($model->video_link) ? 
+                                '<div class="embed-responsive embed-responsive-4by3">
+                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/watch?v=3t324Vb2nXE" frameborder="0" allowfullscreen></iframe>
+                                </div>' : null,
+                            ],
                         ],
                     ]) ?>
                 </div>
