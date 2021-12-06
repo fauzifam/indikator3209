@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 if (Yii::$app->controller->action->id === 'login') {
     /**
@@ -34,6 +35,7 @@ $assetDir = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/admi
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <link rel="shortcut icon" href="<?php echo Url::base(); ?>/images/bps.ico">
 </head>
 
 <body class="hold-transition sidebar-mini sidebar-collapse">

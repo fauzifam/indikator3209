@@ -1,7 +1,9 @@
 <?php
 
+use app\models\Model;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
+use kartik\select2\Select2;
 use wbraganca\dynamicform\DynamicFormWidget;
 
 /* @var $this yii\web\View */
@@ -33,15 +35,40 @@ $script = <<< JS
     });
 JS;
 $this->registerJs($script);
+
+// \app\assets\PluginAsset::register($this)->add(['select2']);
+
+$listmetadata = Model::getMetadataOptions();
 ?>
 
 <div class="indikator-form">
 
     <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
 
-    <?= $form->field($model, 'indikator_metadata_id')->textInput() ?>
+    <!-- < ?= $form->field($model, 'indikator_metadata_id')->dropdownList(Model::getMetadataOptions()); ?> -->
 
-    <?= $form->field($model, 'indikator_kategori')->dropDownList([ 'SOSIAL DAN KEPENDUDUKAN' => 'SOSIAL DAN KEPENDUDUKAN', 'EKONOMI DAN PERDAGANGAN' => 'EKONOMI DAN PERDAGANGAN', 'PERTANIAN DAN PERTAMBANGAN' => 'PERTANIAN DAN PERTAMBANGAN', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'indikator_metadata_id')->widget(Select2::className(),[
+            'data' => Model::getMetadataOptions(),
+            'options' => [
+                'placeholder' => 'Pilih metadata indikator . . .'
+            ],
+            'pluginOptions' => [
+                'allowClear' => true
+            ],
+        ]);
+    ?>
+
+    <?= $form->field($model, 'indikator_kategori')->dropDownList([ 
+            'SOSIAL DAN KEPENDUDUKAN' => 'SOSIAL DAN KEPENDUDUKAN', 
+            'EKONOMI DAN PERDAGANGAN' => 'EKONOMI DAN PERDAGANGAN', 
+            'PERTANIAN DAN PERTAMBANGAN' => 'PERTANIAN DAN PERTAMBANGAN', 
+        ], 
+        [
+            'prompt' => [
+                'text' => 'Pilih kategori data . . .',
+                'options' => ['disabled' => true, 'selected' => true]
+            ]
+        ]) ?>
 
     <?= $form->field($model, 'indikator_subjek')->textInput(['maxlength' => true]) ?>
 
@@ -58,7 +85,7 @@ $this->registerJs($script);
                 'widgetContainer' => 'dynamicform_wrapper', // required: only alphanumeric characters plus "_" [A-Za-z0-9_]
                 'widgetBody' => '.container-items', // required: css class selector
                 'widgetItem' => '.item', // required: css class
-                'limit' => 4, // the maximum times, an element can be cloned (default 999)
+                'limit' => 999, // the maximum times, an element can be cloned (default 999)
                 'min' => 1, // 0 or 1 (default 1)
                 'insertButton' => '.add-item', // css class
                 'deleteButton' => '.remove-item', // css class
@@ -76,7 +103,7 @@ $this->registerJs($script);
                     <div class="item panel panel-default"><!-- widgetBody -->
                         <div class="panel-heading">
                             <!-- <h3 class="panel-title pull-left">Address</h3> -->
-                            <div class="pull-right">
+                            <div class="float-right">
                                 <button type="button" class="add-item btn btn-success"><i class="icon fas fa-plus-square"></i></button>
                                 <button type="button" class="remove-item btn btn-danger"><i class="icon fas fa-minus-square"></i></button>
                             </div>
@@ -109,7 +136,7 @@ $this->registerJs($script);
     </div>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Simpan', ['class' => 'btn btn-success float-right']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -117,6 +117,7 @@ class IndikatorController extends Controller
         $model = Indikator::findOne($id);
         $modelsTahun = $model->indikatorTahuns;
 
+        // var_dump($model->indikatorMetadata->metadata_id);
         if ($model->load(Yii::$app->request->post())) {
             $oldIDs = ArrayHelper::map($modelsTahun, 'indikator_id', 'indikator_id');
             $modelsTahun = Model::createMultiple(IndikatorTahun::classname(), $modelsTahun);

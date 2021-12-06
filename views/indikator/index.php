@@ -6,6 +6,8 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\GridView;
 
+$this->title = 'Tabel Indikator';
+
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
@@ -84,10 +86,10 @@ $this->registerJs($script);
                 <div class="card-body">
                     <table id="indikator-table" class="table table-bordered table-striped">
                         <thead>
-                            <tr>
+                            <tr class="text-center">
                                 <th style="width: 5%;">No.</th>
                                 <th>Judul</th>
-                                <th style="width: 20%;">Kategori</th>
+                                <th style="width: 30%;">Kategori</th>
                                 <th style="width: 10%;">Aksi</th>
                             </tr>
                         </thead>
@@ -140,6 +142,9 @@ Modal::begin([
     'title' => '<h4>Tambah Data</h4>',
     'id' => 'modal-create',
     'size' => 'modal-lg',
+    'options' => [
+        'tabindex' => false,
+    ],
 ]);
 echo "<div id='modal'></div>";
 Modal::end();
@@ -156,6 +161,9 @@ Modal::begin([
     'title' => '<h4>Edit Data</h4>',
     'id' => 'modal-update',
     'size' => 'modal-lg',
+    'options' => [
+        'tabindex' => false,
+    ],
 ]);
 echo "<div id='modal'></div>";
 Modal::end();

@@ -23,27 +23,27 @@ use yii\helpers\Url;
             $menuItems[] = [
                 'label' => 'Beranda',
                 'url' => ['/site/index'],
-                'badge' => '',
+                'icon' => 'fas fa-home',
             ];
             $menuItems[] = [
                 'label' => 'Tabel Indikator',
                 'url' => ['/indikator/index'],
-                'badge' => '',
+                'icon' => 'fas fa-table',
             ];
             $menuItems[] = [
                 'label' => 'Metadata Indikator',
                 'url' => ['/metadata/index'],
-                'badge' => '',
+                'icon' => 'fas fa-list-alt',
             ];
             $menuItems[] = [
                 'label' => 'Publikasi',
                 'url' => ['/publikasi/index'],
-                'badge' => '',
+                'icon' => 'fas fa-book',
             ];
             $menuItems[] = [
                 'label' => 'Rilis',
                 'url' => ['/video/index'],
-                'badge' => '',
+                'icon' => 'fas fa-video',
             ];
 
             $menuItems[] = [

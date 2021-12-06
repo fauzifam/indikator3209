@@ -48,7 +48,8 @@ class PluginAsset extends AssetBundle
             'js' => ['sweetalert2/sweetalert2.min.js']
         ],
         'select2' => [
-            'css' => ['select2/css/select2.min.css', 'select2-bootstrap4-theme/select2-bootstrap4.min.css'],
+            'css' => ['select2/css/select2.min.css', 
+                    'select2-bootstrap4-theme/select2-bootstrap4.min.css'],
             'js' => ['select2/js/select2.full.min.js'],
         ],
         'bs-stepper' => [

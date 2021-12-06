@@ -6,6 +6,8 @@ use yii\bootstrap4\Modal;
 use yii\helpers\Url;
 use yii\grid\GridView;
 
+$this->title = 'Video Rilis';
+
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
@@ -86,7 +88,7 @@ $this->registerJs($script);
                 <div class="card-body">
                     <table id="video-table" class="table table-bordered table-striped">
                         <thead>
-                            <tr>
+                            <tr class="text-center">
                                 <th style="width: 5%;">No.</th>
                                 <th>Judul</th>
                                 <th style="width: 20%;">Kategori</th>

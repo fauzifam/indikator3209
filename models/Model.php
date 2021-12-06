@@ -40,6 +40,13 @@ class Model extends \yii\base\Model
 
         return $models;
     }
+
+    public static function getMetadataOptions(){
+        $model = Metadata::find()->all();
+        $options = ArrayHelper::map($model, 'metadata_id', 'metadata_text');
+
+        return $options;
+    }
 }
 
 

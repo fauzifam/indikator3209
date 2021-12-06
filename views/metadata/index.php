@@ -6,6 +6,8 @@ use yii\bootstrap4\Modal;
 use yii\bootstrap4\Alert;
 use yii\grid\GridView;
 
+$this->title = 'Metadata Indikator';
+
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
@@ -85,7 +87,7 @@ $this->registerJs($script);
                 <div class="card-body">
                     <table id="metadata-table" class="table table-bordered table-striped">
                         <thead>
-                            <tr>
+                            <tr class="text-center">
                                 <th style="width: 5%;">No.</th>
                                 <th>Indikator</th>
                                 <th style="width: 10%;">Aksi</th>

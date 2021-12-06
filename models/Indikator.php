@@ -47,11 +47,11 @@ class Indikator extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'indikator_id' => 'Indikator ID',
-            'indikator_metadata_id' => 'Indikator Metadata ID',
-            'indikator_kategori' => 'Indikator Kategori',
-            'indikator_subjek' => 'Indikator Subjek',
-            'indikator_judul' => 'Indikator Judul',
+            'indikator_id' => 'ID',
+            'indikator_metadata_id' => 'Metadata Indikator',
+            'indikator_kategori' => 'Kategori',
+            'indikator_subjek' => 'Subjek',
+            'indikator_judul' => 'Judul',
         ];
     }
 
