@@ -11,6 +11,7 @@ use yii\helpers\Url;
         </div>
         <div class="info">
             <a href="<?= Url::home() ?>" class="d-block brand-text font-weight-light">BPS KAB. CIREBON</a>
+            <!-- <div class="d-block brand-text font-weight-light">CERDIK</div> -->
         </div>
     </div>
 
@@ -26,7 +27,7 @@ use yii\helpers\Url;
             ];
             $menuItems[] = [
                 'label' => 'Tabel Indikator',
-                'url' => ['/tabel/index'],
+                'url' => ['/indikator/index'],
                 'badge' => '',
             ];
             $menuItems[] = [

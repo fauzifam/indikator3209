@@ -1,8 +1,8 @@
 <?php
 
-use yii\helpers\Html;
 use yii\bootstrap4\Alert;
 use yii\bootstrap4\Modal;
+use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\GridView;
 
@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $script = <<< JS
-$('#video-table').DataTable({
+$('#indikator-table').DataTable({
     'autoWidth'   : false,
 });
 
@@ -20,19 +20,19 @@ $('.create').on('click',function(){
     .load($(this).attr('value'));
 });
 
-$('#video-table tbody').on('click','.view',function(){
+$('#indikator-table tbody').on('click','.view',function(){
     $('#modal-view').modal('show')
     .find('#modal')
     .load($(this).attr('value'));
 });
 
-$('#video-table tbody').on('click','.update',function(){
+$('#indikator-table tbody').on('click','.update',function(){
     $('#modal-update').modal('show')
     .find('#modal')
     .load($(this).attr('value'));
 });
 
-$('#video-table tbody').on('click','.delete',function() {
+$('#indikator-table tbody').on('click','.delete',function() {
     const href = $('.delete').attr('value');
     Swal.fire({
         title: 'Apakah Anda yakin ingin menghapusnya?',
@@ -55,7 +55,6 @@ JS;
 $this->registerJs($script);
 
 \app\assets\PluginAsset::register($this)->add(['dataTable', 'sweetAlert']);
-
 ?>
 <div class="container-fluid">
     <div class="row">
@@ -79,12 +78,11 @@ $this->registerJs($script);
             ?>
             <div class="card">
                 <div class="card-header">
-                    <label class="col-form-label">VIDEO</label>
+                    <label class="col-form-label">TABEL INDIKATOR</label>
                     <?= Html::button('Tambah Data', ['value' => Url::to(['create']), 'class' => 'btn btn-success float-right create', 'id' => 'create']); ?>
                 </div>
-
                 <div class="card-body">
-                    <table id="video-table" class="table table-bordered table-striped">
+                    <table id="indikator-table" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th style="width: 5%;">No.</th>
@@ -101,22 +99,22 @@ $this->registerJs($script);
                             ?>
                             <tr>
                                 <td><?= $i ?></td>
-                                <td><?= $data['video_text'] ?></td>
-                                <td><?= $data['video_kategori'] ?></td>
+                                <td><?= $data['indikator_judul'] ?></td>
+                                <td><?= $data['indikator_kategori'] ?></td>
                                 <td>
                                     <div class="text-center">
                                         <div class="btn-group">
                                             <?= Html::button(
                                                 '<span class="fas fa-eye"></span>',
-                                                ['value' => Url::to(['view', 'id' => $data['video_id']]), 'class' => 'btn btn-sm btn-info view']
+                                                ['value' => Url::to(['view', 'id' => $data['indikator_id']]), 'class' => 'btn btn-sm btn-info view']
                                             ) ?>
                                             <?= Html::button(
                                                 '<span class="fas fa-edit"></span>',
-                                                ['value' => Url::to(['update', 'id' => $data['video_id']]), 'class' => 'btn btn-sm btn-success update']
+                                                ['value' => Url::to(['update', 'id' => $data['indikator_id']]), 'class' => 'btn btn-sm btn-success update']
                                             ) ?>
                                             <?= Html::button(
                                                 '<span class="fas fa-trash-alt"></span>',
-                                                ['value' => Url::to(['delete', 'id' => $data['video_id']]), 'class' => 'btn btn-sm btn-danger delete']
+                                                ['value' => Url::to(['delete', 'id' => $data['indikator_id']]), 'class' => 'btn btn-sm btn-danger delete']
                                             ) ?>
                                         </div>
                                     </div>
@@ -129,7 +127,6 @@ $this->registerJs($script);
                         </tbody>
                     </table>
                 </div>
-                <!--.card-body-->
             </div>
             <!--.card-->
         </div>
@@ -150,7 +147,7 @@ Modal::end();
 Modal::begin([
     'title' => '<h4>Detail Data</h4>',
     'id' => 'modal-view',
-    'size' => 'modal-xl',
+    'size' => 'modal-lg',
 ]);
 echo "<div id='modal'></div>";
 Modal::end();
