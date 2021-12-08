@@ -54,8 +54,17 @@ class IndikatorController extends Controller
     public function actionView($id)
     {
         $model = Indikator::findOne($id);
+        $dataTabel = $model->indikatorTahuns;
+        $dataChart = [
+            'tahun' => ArrayHelper::getColumn($dataTabel,'indikator_tahun'),
+            'nilai' => ArrayHelper::getColumn($dataTabel,'indikator_nilai'),
+            // 'satuan' => array_unique(ArrayHelper::getColumn($dataTabel, 'indikator_satuan')),
+        ];
+        // var_dump($dataTahun1['satuan'][0]);
         return $this->renderAjax('view', [
             'model' => $model,
+            'dataTabel' => $dataTabel,
+            'dataChart' => $dataChart,
         ]);
     }
 

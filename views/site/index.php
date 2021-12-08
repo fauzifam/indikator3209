@@ -11,29 +11,30 @@ $this->title = 'Beranda';
                 <div class="card-body">
                     <?php 
                         echo Highcharts::widget([
-                            // 'scripts' => [
-                            //     'modules/exporting',
-                            //     'themes/grid-light',
-                            // ],
+                            'scripts' => [
+                                'modules/exporting',
+                                'themes/grid-light',
+                            ],
                             'options' => [
                                 'title' => [
-                                    'text' => 'Combination chart',
+                                    'text' => 'Total Fruits',
                                 ],
                                 'xAxis' => [
                                     'categories' => ['Apples', 'Oranges', 'Pears', 'Bananas', 'Plums'],
                                 ],
-                                'labels' => [
-                                    'items' => [
-                                        [
-                                            'html' => 'Total fruit consumption',
-                                            'style' => [
-                                                'left' => '50px',
-                                                'top' => '18px',
-                                                'color' => new JsExpression('(Highcharts.theme && Highcharts.theme.textColor) || "black"'),
-                                            ],
-                                        ],
-                                    ],
-                                ],
+                                // 'labels' => 
+                                // [
+                                //     'items' => [
+                                //         [
+                                //             'html' => 'Total fruit consumption',
+                                //             'style' => [
+                                //                 'left' => '50px',
+                                //                 'top' => '18px',
+                                //                 'color' => new JsExpression('(Highcharts.theme && Highcharts.theme.textColor) || "black"'),
+                                //             ],
+                                //         ],
+                                //     ],
+                                // ],
                                 'series' => [
                                     [
                                         'type' => 'spline',

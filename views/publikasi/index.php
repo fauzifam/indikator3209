@@ -87,7 +87,7 @@ $this->registerJs($script);
                     <?= Html::button('Tambah Data', ['value' => Url::to(['create']), 'class' => 'btn btn-success float-right create', 'id' => 'create']); ?>
                 </div>
                 <div class="card-body">
-                <table id="publikasi-table" class="table table-bordered table-striped">
+                <table id="publikasi-table" class="table table-bordered table-striped table-sm">
                         <thead>
                             <tr class="text-center">
                                 <th style="width: 5%;">No.</th>
@@ -102,9 +102,12 @@ $this->registerJs($script);
                             $i = ++$i;
                             ?>
                             <tr>
-                                <td><?= $i ?></td>
-                                <td><?= $data['publikasi_judul'] ?></td>
-                                <td>
+                                <td class="align-middle text-center"><?= $i ?></td>
+                                <td class="align-middle">
+                                    <?= Html::img('@web/'.$data['publikasi_pathcover'],['style'=>'width:60px']) ?> 
+                                    <?= $data['publikasi_judul'] ?>
+                                </td>
+                                <td class="align-middle">
                                     <div class="text-center">
                                         <div class="btn-group">
                                             <?= Html::button(

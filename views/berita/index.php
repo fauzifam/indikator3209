@@ -70,7 +70,7 @@ $this->title = 'Berita';
                     <?= Html::a('Tambah Data', ['create'], ['class' => 'btn btn-success float-right create']) ?>
                 </div>
                 <div class="card-body">
-                    <table id="berita-table" class="table table-bordered table-striped">
+                    <table id="berita-table" class="table table-bordered table-striped table-sm">
                         <thead>
                             <tr class="text-center">
                                 <th style="width: 5%;">No.</th>
@@ -85,9 +85,9 @@ $this->title = 'Berita';
                             $i = ++$i;
                             ?>
                             <tr>
-                                <td><?= $i ?></td>
-                                <td><?= $data['berita_text'] ?></td>
-                                <td>
+                                <td class="align-middle text-center"><?= $i ?></td>
+                                <td class="align-middle"><?= $data['berita_text'] ?></td>
+                                <td class="align-middle">
                                     <div class="text-center">
                                         <div class="btn-group">
                                             <?= Html::a(

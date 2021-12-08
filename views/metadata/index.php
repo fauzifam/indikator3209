@@ -85,7 +85,7 @@ $this->registerJs($script);
                 </div>
 
                 <div class="card-body">
-                    <table id="metadata-table" class="table table-bordered table-striped">
+                    <table id="metadata-table" class="table table-bordered table-striped table-sm">
                         <thead>
                             <tr class="text-center">
                                 <th style="width: 5%;">No.</th>
@@ -100,9 +100,9 @@ $this->registerJs($script);
                             $i = ++$i;
                             ?>
                             <tr>
-                                <td><?= $i ?></td>
-                                <td><?= $data['metadata_text'] ?></td>
-                                <td>
+                                <td class="align-middle text-center"><?= $i ?></td>
+                                <td class="align-middle"><?= $data['metadata_text'] ?></td>
+                                <td class="align-middle">
                                     <div class="text-center">
                                         <div class="btn-group">
                                             <?= Html::button(

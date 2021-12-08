@@ -84,7 +84,7 @@ $this->registerJs($script);
                     <?= Html::button('Tambah Data', ['value' => Url::to(['create']), 'class' => 'btn btn-success float-right create', 'id' => 'create']); ?>
                 </div>
                 <div class="card-body">
-                    <table id="indikator-table" class="table table-bordered table-striped">
+                    <table id="indikator-table" class="table table-bordered table-striped table-sm">
                         <thead>
                             <tr class="text-center">
                                 <th style="width: 5%;">No.</th>
@@ -100,10 +100,10 @@ $this->registerJs($script);
                             $i = ++$i;
                             ?>
                             <tr>
-                                <td><?= $i ?></td>
-                                <td><?= $data['indikator_judul'] ?></td>
-                                <td><?= $data['indikator_kategori'] ?></td>
-                                <td>
+                                <td class="align-middle text-center"><?= $i ?></td>
+                                <td class="align-middle"><?= $data['indikator_judul'] ?></td>
+                                <td class="align-middle"><?= $data['indikator_kategori'] ?></td>
+                                <td class="align-middle">
                                     <div class="text-center">
                                         <div class="btn-group">
                                             <?= Html::button(
@@ -152,7 +152,7 @@ Modal::end();
 Modal::begin([
     'title' => '<h4>Detail Data</h4>',
     'id' => 'modal-view',
-    'size' => 'modal-lg',
+    'size' => 'modal-xl',
 ]);
 echo "<div id='modal'></div>";
 Modal::end();
