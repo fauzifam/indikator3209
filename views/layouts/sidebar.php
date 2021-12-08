@@ -41,9 +41,9 @@ use yii\helpers\Url;
                 'icon' => 'fas fa-book',
             ];
             $menuItems[] = [
-                'label' => 'Rilis',
-                'url' => ['/video/index'],
-                'icon' => 'fas fa-video',
+                'label' => 'Berita',
+                'url' => ['/berita/index'],
+                'icon' => 'fas fa-newspaper',
             ];
 
             $menuItems[] = [

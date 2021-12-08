@@ -36,6 +36,8 @@ use yii\jui\DatePicker;
         'dateFormat' => 'php:Y-m-d'
     ]); ?>
 
+    <?= $form->field($model, 'publikasi_uploadcover')->fileInput(); ?>
+
     <?= $form->field($model, 'publikasi_upload')->fileInput(); ?>
 
     <?= $form->field($model, 'publikasi_deskripsi')->textarea(['rows' => 6]) ?>

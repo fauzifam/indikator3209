@@ -68,14 +68,20 @@ class PublikasiController extends Controller
         $BtoMB = 1048576;
         
         if ($model->load(Yii::$app->request->post())) {
+            //file publikasi .pdf
             $model->publikasi_upload = UploadedFile::getInstance($model, 'publikasi_upload');
             $model->publikasi_filename = $model->publikasi_judul . '.' . $model->publikasi_upload->extension;
-            // $model->file_filename = str_replace(' ', '_', $model->file_filename);
             $nama = $model->publikasi_filename;
             $ukuran = $model->publikasi_upload->size / $BtoMB;
             $model->publikasi_ukuran = round($ukuran, 3).' MB';
-            $model->publikasi_upload->saveAs('uploads/' . $nama);
-            $model->publikasi_path = 'uploads/' . $nama;
+            $model->publikasi_path = 'uploads/publikasi/' . $nama;
+            $model->publikasi_upload->saveAs($model->publikasi_path);
+
+            //file cover publikasi
+            $model->publikasi_uploadcover = UploadedFile::getInstance($model, 'publikasi_uploadcover');
+            $cover = $model->publikasi_judul . '.' . $model->publikasi_uploadcover->extension;
+            $model->publikasi_pathcover = 'uploads/publikasi/' . $cover;
+            $model->publikasi_uploadcover->saveAs($model->publikasi_pathcover);
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', 'Berhasil Disimpan');
             } else {
@@ -101,14 +107,20 @@ class PublikasiController extends Controller
         $model = Publikasi::findOne($id);
         $BtoMB = 1048576;
         if ($model->load(Yii::$app->request->post())) {
+            //file publikasi .pdf
             $model->publikasi_upload = UploadedFile::getInstance($model, 'publikasi_upload');
             $model->publikasi_filename = $model->publikasi_judul . '.' . $model->publikasi_upload->extension;
-            // $model->file_filename = str_replace(' ', '_', $model->file_filename);
             $nama = $model->publikasi_filename;
             $ukuran = $model->publikasi_upload->size / $BtoMB;
             $model->publikasi_ukuran = round($ukuran, 3).' MB';
-            $model->publikasi_upload->saveAs('uploads/' . $nama);
-            $model->publikasi_path = 'uploads/' . $nama;
+            $model->publikasi_path = 'uploads/publikasi/' . $nama;
+            $model->publikasi_upload->saveAs($model->publikasi_path);
+
+            //file cover publikasi
+            $model->publikasi_uploadcover = UploadedFile::getInstance($model, 'publikasi_uploadcover');
+            $cover = $model->publikasi_judul . '.' . $model->publikasi_uploadcover->extension;
+            $model->publikasi_pathcover = 'uploads/publikasi/' . $cover;
+            $model->publikasi_uploadcover->saveAs($model->publikasi_pathcover);
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', 'Berhasil Diubah');
             } else {

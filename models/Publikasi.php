@@ -14,12 +14,14 @@ use Yii;
  * @property string $publikasi_daterilis
  * @property string $publikasi_filename
  * @property string $publikasi_path
+ * @property string $publikasi_pathcover
  * @property string $publikasi_ukuran
  * @property string $publikasi_deskripsi
  */
 class Publikasi extends \yii\db\ActiveRecord
 {
     public $publikasi_upload;
+    public $publikasi_uploadcover;
 
     /**
      * {@inheritdoc}
@@ -35,10 +37,10 @@ class Publikasi extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['publikasi_judul', 'publikasi_daterilis', 'publikasi_path', 'publikasi_ukuran', 'publikasi_deskripsi', 'publikasi_upload', 'publikasi_filename'], 'required'],
+            [['publikasi_judul', 'publikasi_daterilis', 'publikasi_path', 'publikasi_pathcover', 'publikasi_ukuran', 'publikasi_deskripsi', 'publikasi_upload', 'publikasi_filename'], 'required'],
             [['publikasi_daterilis'], 'safe'],
-            [['publikasi_upload'], 'file'],
-            [['publikasi_path', 'publikasi_deskripsi'], 'string'],
+            [['publikasi_upload', 'publikasi_uploadcover'], 'file'],
+            [['publikasi_path', 'publikasi_pathcover', 'publikasi_deskripsi'], 'string'],
             [['publikasi_judul', 'publikasi_filename'], 'string', 'max' => 1020],
             [['publikasi_nokatalog', 'publikasi_nobuku'], 'string', 'max' => 255],
             [['publikasi_ukuran'], 'string', 'max' => 100],
@@ -54,11 +56,13 @@ class Publikasi extends \yii\db\ActiveRecord
             'publikasi_id' => 'Publikasi ID',
             'publikasi_judul' => 'Judul publikasi',
             'publikasi_nokatalog' => 'Nomor katalog',
-            'publikasi_nobuku' => 'Nomor buku',
+            'publikasi_nobuku' => 'Nomor ISSN/ISBN',
             'publikasi_daterilis' => 'Tanggal rilis',
+            'publikasi_uploadcover' => 'Upload Cover',
             'publikasi_upload' => 'Upload Publikasi',
             'publikasi_filename' => 'Nama File',
             'publikasi_path' => 'Path',
+            'publikasi_pathcover' => 'Path Cover',
             'publikasi_ukuran' => 'Ukuran Publikasi',
             'publikasi_deskripsi' => 'Deskripsi',
         ];

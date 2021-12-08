@@ -22,7 +22,9 @@
         "wbraganca/yii2-dynamicform": "*",
         "yiisoft/yii2-jui": "~2.0.0",
         "tpmanc/yii2-imagick": "*",
-        "kartik-v/yii2-widget-select2": "dev-master"
+        "kartik-v/yii2-widget-select2": "dev-master",
+        "miloschuman/yii2-highcharts-widget": "^8.0",
+        "marqu3s/yii2-summernote": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
