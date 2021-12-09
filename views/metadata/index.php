@@ -90,7 +90,7 @@ $this->registerJs($script);
                             <tr class="text-center">
                                 <th style="width: 5%;">No.</th>
                                 <th>Indikator</th>
-                                <th style="width: 10%;">Aksi</th>
+                                <th style="width: 15%;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -90,7 +90,7 @@ $this->registerJs($script);
                                 <th style="width: 5%;">No.</th>
                                 <th>Judul</th>
                                 <th style="width: 30%;">Kategori</th>
-                                <th style="width: 10%;">Aksi</th>
+                                <th style="width: 15%;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>

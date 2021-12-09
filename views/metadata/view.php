@@ -23,6 +23,9 @@ use yii\widgets\DetailView;
                             'metadata_interpretasi:ntext',
                             'metadata_sumber:ntext',
                         ],
+                        'options' => [
+                            'class' => 'table table-striped table-sm table-bordered'
+                        ]
                     ]) ?>
                 </div>
                 <!--.col-md-12-->

@@ -92,7 +92,7 @@ $this->registerJs($script);
                             <tr class="text-center">
                                 <th style="width: 5%;">No.</th>
                                 <th>Judul Publikasi</th>
-                                <th style="width: 20%;">Aksi</th>
+                                <th style="width: 15%;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -111,7 +111,7 @@ $this->registerJs($script);
                                     <div class="text-center">
                                         <div class="btn-group">
                                             <?= Html::button(
-                                                '<span class="fas fa-download"></span> DOWNLOAD',
+                                                '<span class="fas fa-download"></span>',
                                                 ['value' => Url::to(['download', 'id' => $data['publikasi_id']]), 'class' => 'btn btn-sm btn-warning download', 'id' => 'download']
                                             ) ?>
                                             <?= Html::button(

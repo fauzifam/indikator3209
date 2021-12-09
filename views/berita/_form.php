@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
-// use kartik\editors\Summernote;
 use marqu3s\summernote\Summernote;
 
 /* @var $this yii\web\View */
@@ -34,8 +33,8 @@ use marqu3s\summernote\Summernote;
 
     <?= $form->field($model, 'berita_active')->radioList([ 'Tampilkan' => 'Tampilkan', 'Arsipkan' => 'Arsipkan', ], ['prompt' => '']) ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+    <div class="form-group text-center">
+        <?= Html::submitButton('Simpan', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

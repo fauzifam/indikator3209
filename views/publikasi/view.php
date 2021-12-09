@@ -13,22 +13,17 @@ use yii\widgets\DetailView;
     <div class="card">
         <div class="card-body">
             <div class="row">
-                <div class="col-md-12">
-                    <?= DetailView::widget([
-                        'model' => $model,
-                        'attributes' => [
-                            'publikasi_id',
-                            'publikasi_judul',
-                            'publikasi_nokatalog',
-                            'publikasi_nobuku',
-                            'publikasi_daterilis',
-                            'publikasi_path:ntext',
-                            'publikasi_ukuran',
-                            'publikasi_deskripsi:ntext',
-                        ],
-                    ]) ?>
+                <div class="col-md-3 text-center">
+                    <?= Html::img('@web/' . $model->publikasi_pathcover, ['style'=>'width:170px']) ?>
                 </div>
-                <!--.col-md-12-->
+                <div class="col-md-9">
+                    Nomor katalog : <?= $model->publikasi_nokatalog ?><br>
+                    Nomor ISSN/ISBN : <?= $model->publikasi_nobuku ?><br>
+                    Tanggal rilis : <?= $model->publikasi_daterilis ?><br>
+                    Ukuran file : <?= $model->publikasi_ukuran ?><br>
+                    <br>
+                    Deskripsi : <?= $model->publikasi_deskripsi ?>
+                </div>
             </div>
             <!--.row-->
         </div>

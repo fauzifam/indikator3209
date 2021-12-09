@@ -75,7 +75,7 @@ $this->title = 'Berita';
                             <tr class="text-center">
                                 <th style="width: 5%;">No.</th>
                                 <th>Judul Berita</th>
-                                <th style="width: 10%;">Aksi</th>
+                                <th style="width: 15%;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
