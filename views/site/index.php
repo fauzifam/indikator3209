@@ -2,7 +2,7 @@
 use miloschuman\highcharts\Highcharts;
 use yii\helpers\Html;
 
-$this->title = 'Beranda';
+$this->title = 'CERDIK | Beranda';
 ?>
 <div class="container-fluid">
     <?php foreach ($indikator  as $value) : ?>

@@ -5,7 +5,7 @@ use yii\bootstrap4\Modal;
 use yii\helpers\Url;
 use yii\bootstrap4\Alert;
 
-$this->title = 'Publikasi';
+$this->title = 'CERDIK | Publikasi';
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 

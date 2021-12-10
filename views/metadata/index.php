@@ -6,7 +6,7 @@ use yii\bootstrap4\Modal;
 use yii\bootstrap4\Alert;
 use yii\grid\GridView;
 
-$this->title = 'Metadata Indikator';
+$this->title = 'CERDIK | Metadata Indikator';
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */

@@ -42,7 +42,7 @@ $this->registerJs($script);
 
 \app\assets\PluginAsset::register($this)->add(['dataTable', 'sweetAlert']);
 
-$this->title = 'Berita';
+$this->title = 'CERDIK | Berita';
 ?>
 <div class="container-fluid">
     <div class="row">

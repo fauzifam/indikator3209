@@ -59,12 +59,12 @@ use yii\helpers\Url;
                 'icon' => 'fas fa-newspaper',
             ];
 
-            $menuItems[] = [
-                'label' => 'Gii',
-                'icon' => 'file-code', 
-                'url' => ['/gii'], 
-                'target' => '_blank',
-            ];
+            // $menuItems[] = [
+            //     'label' => 'Gii',
+            //     'icon' => 'file-code', 
+            //     'url' => ['/gii'], 
+            //     'target' => '_blank',
+            // ];
             
             echo \hail812\adminlte\widgets\Menu::widget([
                 'items' => $menuItems,
