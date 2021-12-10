@@ -30,7 +30,7 @@ class IndikatorTahun extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['indikator_id', 'indikator_tahun', 'indikator_nilai', 'indikator_satuan'], 'required'],
+            [['indikator_tahun', 'indikator_nilai', 'indikator_satuan'], 'required'],
             [['indikator_id'], 'integer'],
             [['indikator_nilai'], 'number'],
             [['indikator_tahun'], 'string', 'max' => 4],

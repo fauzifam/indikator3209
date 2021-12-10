@@ -10,6 +10,9 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Indikator;
+use app\models\IndikatorTahun;
+use app\models\Publikasi;
+use yii\helpers\ArrayHelper;
 
 class SiteController extends Controller
 {
@@ -33,7 +36,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    // 'logout' => ['post'],
                 ],
             ],
         ];
@@ -62,7 +65,28 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $indikatorID = array(13,10,11);
+        $indikator = Indikator::findAll(['indikator_id' => $indikatorID]);
+        foreach ($indikator as $value) {
+            $indikatorTahun = IndikatorTahun::findAll(['indikator_id' => $value->indikator_id]);
+            $indikatorTahunMax = max($indikatorTahun);
+            list($judul,$rentang) = explode(',',$value->indikator_judul);
+            $array[] = [
+                'judul' => $judul,
+                'kondef' => $value->indikatorMetadata->metadata_kondef,
+                'sumber' => $value->indikatorMetadata->metadata_sumber,
+                'tahun' => $indikatorTahunMax->indikator_tahun,
+                'nilai' => $indikatorTahunMax->indikator_nilai,
+                'satuan' => $indikatorTahunMax->indikator_satuan,
+            ];
+        }
+
+        $maxid = Publikasi::find()->max('publikasi_id');
+        $cover = Publikasi::find()->select('publikasi_pathcover')->where(['publikasi_id'=>array($maxid,$maxid-1,$maxid-2)])->all();
+        return $this->render('index', [
+            'indikator' => $array,
+            'cover' => $cover
+        ]);
     }
 
     /**

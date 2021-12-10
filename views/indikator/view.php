@@ -46,27 +46,15 @@ use yii\web\JsExpression;
                             ?>
                                 <tr>
                                     <td class="text-center"><?= $i ?></td>
-                                    <td><?= $data['indikator_tahun'] ?></td>
-                                    <td><?= $data['indikator_nilai'] ?></td>
-                                    <td><?= $data['indikator_satuan'] ?></td>
+                                    <td class="text-center"><?= $data['indikator_tahun'] ?></td>
+                                    <td class="text-right"><?= $data['indikator_nilai'] ?></td>
+                                    <td class="text-center"><?= $data['indikator_satuan'] ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
-                    <!-- < ?= DetailView::widget([
-                        'model' => $model,
-                        'attributes' => [
-                            'indikator_id',
-                            'indikator_metadata_id',
-                            'indikator_kategori',
-                            'indikator_subjek',
-                            'indikator_judul',
-                        ],
-                    ]) ?> -->
                 </div>
                 <!--.col-md-6-->
-            <!-- </div>
-            <div class="row"> -->
                 <div class="col-md-7">
                     <?= Highcharts::widget([
                         'scripts' => [

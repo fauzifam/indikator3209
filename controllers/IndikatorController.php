@@ -7,6 +7,7 @@ use app\models\Indikator;
 use app\models\IndikatorTahun;
 use Exception;
 use app\models\Model;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -23,6 +24,17 @@ class IndikatorController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['create', 'update', 'delete'],
+                'rules' => [
+                    [
+                        'actions' => ['create', 'update', 'delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -85,7 +97,7 @@ class IndikatorController extends Controller
             // validate all models
             $valid = $model->validate();
             $valid = Model::validateMultiple($modelsTahun) && $valid;
-            if (!$valid) {
+            if ($valid) {
                 // save all models to db
                 $transaction = \Yii::$app->db->beginTransaction();
                 try {
@@ -137,7 +149,8 @@ class IndikatorController extends Controller
             $valid = $model->validate();
             $valid = Model::validateMultiple($modelsTahun) && $valid;
 
-            if (!$valid) {
+            // var_dump($valid);
+            if ($valid) {
                 $transaction = \Yii::$app->db->beginTransaction();
                 try {
                     if ($flag = $model->save(false)) {

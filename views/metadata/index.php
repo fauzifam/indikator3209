@@ -81,7 +81,11 @@ $this->registerJs($script);
             <div class="card">
                 <div class="card-header">
                     <label class="col-form-label">METADATA INDIKATOR</label>
-                    <?= Html::button('Tambah Data', ['value' => Url::to(['create']), 'class' => 'btn btn-success float-right create', 'id' => 'create']); ?>
+                    <?php 
+                    if (!Yii::$app->user->isGuest) {
+                        echo Html::button('Tambah Data', ['value' => Url::to(['create']), 'class' => 'btn btn-success float-right create', 'id' => 'create']);
+                    } 
+                    ?>
                 </div>
 
                 <div class="card-body">
@@ -109,14 +113,22 @@ $this->registerJs($script);
                                                 '<span class="fas fa-eye"></span>',
                                                 ['value' => Url::to(['view', 'id' => $data['metadata_id']]), 'class' => 'btn btn-sm btn-info view']
                                             ) ?>
-                                            <?= Html::button(
+                                            <?php
+                                            if (!Yii::$app->user->isGuest) {
+                                                echo Html::button(
                                                 '<span class="fas fa-edit"></span>',
                                                 ['value' => Url::to(['update', 'id' => $data['metadata_id']]), 'class' => 'btn btn-sm btn-success update']
-                                            ) ?>
-                                            <?= Html::button(
+                                                );
+                                            }
+                                            ?>
+                                            <?php 
+                                            if (!Yii::$app->user->isGuest) {
+                                                echo Html::button(
                                                 '<span class="fas fa-trash-alt"></span>',
                                                 ['value' => Url::to(['delete', 'id' => $data['metadata_id']]), 'class' => 'btn btn-sm btn-danger delete']
-                                            ) ?>
+                                                );
+                                            }
+                                            ?>
                                         </div>
                                     </div>
                                 </td>

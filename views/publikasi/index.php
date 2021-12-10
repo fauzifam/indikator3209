@@ -84,14 +84,19 @@ $this->registerJs($script);
             <div class="card">
                 <div class="card-header">
                     <label class="col-form-label">PUBLIKASI</label>
-                    <?= Html::button('Tambah Data', ['value' => Url::to(['create']), 'class' => 'btn btn-success float-right create', 'id' => 'create']); ?>
+                    
+                    <?php
+                    if (!Yii::$app->user->isGuest) {
+                        echo Html::button('Tambah Data', ['value' => Url::to(['create']), 'class' => 'btn btn-success float-right create', 'id' => 'create']); 
+                    }
+                    ?>
                 </div>
                 <div class="card-body">
                 <table id="publikasi-table" class="table table-bordered table-striped table-sm">
                         <thead>
                             <tr class="text-center">
                                 <th style="width: 5%;">No.</th>
-                                <th>Judul Publikasi</th>
+                                <th style="width: 80%;" colspan='2'>Judul Publikasi</th>
                                 <th style="width: 15%;">Aksi</th>
                             </tr>
                         </thead>
@@ -103,9 +108,15 @@ $this->registerJs($script);
                             ?>
                             <tr>
                                 <td class="align-middle text-center"><?= $i ?></td>
-                                <td class="align-middle">
-                                    <?= Html::img('@web/'.$data['publikasi_pathcover'],['style'=>'width:60px']) ?> 
-                                    <?= $data['publikasi_judul'] ?>
+                                <td class="align-middle" style="width: 9%;">
+                                    <?= Html::img('@web/'.$data['publikasi_pathcover'],['style'=>'width:100px']) ?> 
+                                </td>
+                                <td>
+                                    <b><?= $data['publikasi_judul'] ?></b><br>
+                                    <br>
+                                    <i>Tanggal rilis : </i><?= $data['publikasi_daterilis'] ?><br>
+                                    <br>
+                                    <i>Ukuran file : </i><?= $data['publikasi_ukuran'] ?>
                                 </td>
                                 <td class="align-middle">
                                     <div class="text-center">
@@ -118,14 +129,22 @@ $this->registerJs($script);
                                                 '<span class="fas fa-eye"></span>',
                                                 ['value' => Url::to(['view', 'id' => $data['publikasi_id']]), 'class' => 'btn btn-sm btn-info view']
                                             ) ?>
-                                            <?= Html::button(
+                                            <?php
+                                            if (!Yii::$app->user->isGuest) {
+                                                echo Html::button(
                                                 '<span class="fas fa-edit"></span>',
                                                 ['value' => Url::to(['update', 'id' => $data['publikasi_id']]), 'class' => 'btn btn-sm btn-success update']
-                                            ) ?>
-                                            <?= Html::button(
+                                                );
+                                            } 
+                                            ?>
+                                            <?php
+                                            if (!Yii::$app->user->isGuest) {
+                                                echo Html::button(
                                                 '<span class="fas fa-trash-alt"></span>',
                                                 ['value' => Url::to(['delete', 'id' => $data['publikasi_id']]), 'class' => 'btn btn-sm btn-danger delete']
-                                            ) ?>
+                                                );
+                                            } 
+                                            ?>
                                         </div>
                                     </div>
                                 </td>

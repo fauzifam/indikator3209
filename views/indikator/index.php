@@ -81,7 +81,11 @@ $this->registerJs($script);
             <div class="card">
                 <div class="card-header">
                     <label class="col-form-label">TABEL INDIKATOR</label>
-                    <?= Html::button('Tambah Data', ['value' => Url::to(['create']), 'class' => 'btn btn-success float-right create', 'id' => 'create']); ?>
+                    <?php
+                    if (!Yii::$app->user->isGuest) {
+                        echo Html::button('Tambah Data', ['value' => Url::to(['create']), 'class' => 'btn btn-success float-right create', 'id' => 'create']);
+                    }
+                    ?>
                 </div>
                 <div class="card-body">
                     <table id="indikator-table" class="table table-bordered table-striped table-sm">
@@ -89,7 +93,7 @@ $this->registerJs($script);
                             <tr class="text-center">
                                 <th style="width: 5%;">No.</th>
                                 <th>Judul</th>
-                                <th style="width: 30%;">Kategori</th>
+                                <th style="width: 20%;">Kategori</th>
                                 <th style="width: 15%;">Aksi</th>
                             </tr>
                         </thead>
@@ -110,14 +114,22 @@ $this->registerJs($script);
                                                 '<span class="fas fa-eye"></span>',
                                                 ['value' => Url::to(['view', 'id' => $data['indikator_id']]), 'class' => 'btn btn-sm btn-info view']
                                             ) ?>
-                                            <?= Html::button(
+                                            <?php
+                                            if (!Yii::$app->user->isGuest) {
+                                                echo Html::button(
                                                 '<span class="fas fa-edit"></span>',
                                                 ['value' => Url::to(['update', 'id' => $data['indikator_id']]), 'class' => 'btn btn-sm btn-success update']
-                                            ) ?>
-                                            <?= Html::button(
+                                                );
+                                            } 
+                                            ?>
+                                            <?php 
+                                            if (!Yii::$app->user->isGuest) {
+                                                echo Html::button(
                                                 '<span class="fas fa-trash-alt"></span>',
                                                 ['value' => Url::to(['delete', 'id' => $data['indikator_id']]), 'class' => 'btn btn-sm btn-danger delete']
-                                            ) ?>
+                                                );
+                                            } 
+                                            ?>
                                         </div>
                                     </div>
                                 </td>

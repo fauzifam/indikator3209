@@ -67,7 +67,11 @@ $this->title = 'Berita';
             <div class="card">
                 <div class="card-header">
                     <label class="col-form-label">BERITA</label>
-                    <?= Html::a('Tambah Data', ['create'], ['class' => 'btn btn-success float-right create']) ?>
+                    <?php
+                    if (!Yii::$app->user->isGuest) {
+                        echo Html::a('Tambah Data', ['create'], ['class' => 'btn btn-success float-right create']);
+                    } 
+                    ?>
                 </div>
                 <div class="card-body">
                     <table id="berita-table" class="table table-bordered table-striped table-sm">
@@ -94,15 +98,17 @@ $this->title = 'Berita';
                                                 '<span class="fas fa-eye"></span>',
                                                 ['view', 'id' => $data['berita_id']], ['class' => 'btn btn-sm btn-info view']
                                             ) ?>
-                                            <?= Html::a('<span class="fas fa-edit"></span>', ['update', 'id' => $data['berita_id']], ['class' => 'btn btn-sm btn-success update']) ?>
-                                            <!-- < ?= Html::button(
-                                                '<span class="fas fa-edit"></span>',
-                                                ['value' => Url::to(['update', 'id' => $data['berita_id']]), 'class' => 'btn btn-sm btn-success update']
-                                            ) ?> -->
-                                            <?= Html::button(
+                                            <?php
+                                            if (!Yii::$app->user->isGuest) {
+                                                echo Html::a('<span class="fas fa-edit"></span>', ['update', 'id' => $data['berita_id']], ['class' => 'btn btn-sm btn-success update']);
+                                            } ?>
+                                            <?php 
+                                            if (!Yii::$app->user->isGuest) {
+                                                echo Html::button(
                                                 '<span class="fas fa-trash-alt"></span>',
-                                                ['value' => Url::to(['delete', 'id' => $data['berita_id']]), 'class' => 'btn btn-sm btn-danger delete']
-                                            ) ?>
+                                                ['value' => Url::to(['delete', 'id' => $data['berita_id']]), 'class' => 'btn btn-sm btn-danger delete']);
+                                            } 
+                                            ?>
                                         </div>
                                     </div>
                                 </td>

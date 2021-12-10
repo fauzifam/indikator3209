@@ -20,6 +20,19 @@ use yii\helpers\Url;
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <?php
+            if (Yii::$app->user->isGuest) {
+                $menuItems[] = [
+                    'label' => 'Login',
+                    'url' => ['/site/login'],
+                    'icon' => 'fas fa-sign-in-alt',
+                ];
+            } else {
+                $menuItems[] = [
+                    'label' => 'Logout',
+                    'url' => ['/site/logout'],
+                    'icon' => 'fas fa-sign-out-alt',
+                ];
+            }
             $menuItems[] = [
                 'label' => 'Beranda',
                 'url' => ['/site/index'],
